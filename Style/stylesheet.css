@@ -1,0 +1,16 @@
+#gameContainer {
+  width: 400px;
+  height: 400px;
+  background-color: lavender;
+  margin: auto;
+  position: relative;
+}
+
+#playerCharacter {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 20px;
+  height: 20px;
+  background-color: plum;
+}
