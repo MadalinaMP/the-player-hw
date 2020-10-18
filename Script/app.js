@@ -4,51 +4,60 @@ class Player {
     this.playerCharacter = playerCharacter;
   }
 
-  createPlayerHTML() {
-    var playerCharacter = document.getElementById(playerCharacter);
-  }
-
   registerMovement() {
-    window.addEventListener("keydown", this.movePlayerHTML);
+    window.addEventListener("keydown", (event) => {
+      this.movePlayerHTML(event);
+    });
   }
 
-  movePlayerHTML() {
-    var newPlayer = this.createPlayerHTML();
-    var toLeft = parseInt(this.newPlayer.style.left);
-    var upwards = parseInt(this.newPlayer.style.top);
+  movePlayerHTML(event) {
+    var nextLeft = parseInt(this.playerCharacter.style.left);
+    var nextTop = parseInt(this.playerCharacter.style.top);
     var movePlayerBy = 10;
 
-    switch (newPlayer) {
-      case "left":
-        toLeft = toLeft - movePlayerBy + "px";
+    //console.log(event);
+
+    switch (event.key) {
+      case "ArrowLeft":
+        nextLeft = nextLeft - movePlayerBy;
         break;
 
-      case "right":
-        toLeft = toLeft + movePlayerBy + "px";
+      case "ArrowRight":
+        nextLeft = nextLeft + movePlayerBy;
         break;
 
-      case "up":
-        upwards = upwards - movePlayerBy + "px";
+      case "ArrowUp":
+        nextTop = nextTop - movePlayerBy;
         break;
 
-      case "down":
-        upwards = upwards + movePlayerBy + "px";
+      case "ArrowDown":
+        nextTop = nextTop + movePlayerBy;
         break;
+    }
+
+    //console.log(nextLeft, nextTop);
+
+    if (this.isPlayerPositionIsInDiv(nextLeft, nextTop)) {
+      this.playerCharacter.style.left = nextLeft + "px";
+      this.playerCharacter.style.top = nextTop + "px";
     }
   }
 
-  checkIfPlayerIsOutsideOfContainer(player) {
+  isPlayerPositionIsInDiv(nextLeft, nextTop) {
     if (
-      this.playerCharacter.style.top !== -1 ||
-      this.playerCharacter.style.right !== -1 ||
-      this.playerCharacter.style.top !== 381 ||
-      this.playerCharacter.style.right !== 381
+      !(nextLeft < 0) &&
+      !(nextTop < 0) &&
+      !(nextLeft > 380) &&
+      !(nextTop > 380)
     ) {
-      player.movePlayerHTML();
+      return true;
+    } else {
+      return false;
     }
   }
 }
 
 const gameContainer = document.querySelector("#gameContainer");
-const myPlayer = new Player();
-myPlayer.movePlayerHTML();
+const playerCharacter = document.getElementById("playerCharacter");
+const myPlayer = new Player(gameContainer, playerCharacter);
+myPlayer.registerMovement();
