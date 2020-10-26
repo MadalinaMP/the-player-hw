@@ -47,8 +47,8 @@ class Player {
     if (
       !(nextLeft < 0) &&
       !(nextTop < 0) &&
-      !(nextLeft > 380) &&
-      !(nextTop > 380)
+      !(nextLeft > 550) &&
+      !(nextTop > 550)
     ) {
       return true;
     } else {
