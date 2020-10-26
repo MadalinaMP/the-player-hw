@@ -1,5 +1,5 @@
 body {
-  background: url(tiles.png);
+  background: url(src/tiles.png);
 }
 
 #gameContainer {
@@ -12,12 +12,12 @@ body {
   transform: translate(-50%, -50%);
   border: 2px solid white;
   box-shadow: 0px 0px 16px 11px rgba(124, 255, 248, 0.541);
-  background-color: rgba(200, 255, 255, 0.233);
+  background-color: rgba(200, 255, 255, 0.418);
 }
 
 #gameContainer::after {
   content: "";
-  background: url(container.gif);
+  background: url(src/container.gif);
   background-size: cover;
   opacity: 0.3;
   top: 0;
@@ -32,6 +32,6 @@ body {
   position: absolute;
   width: 50px;
   height: 50px;
-  background: url(ufo.png);
+  background: url(src/ufo.png);
   background-repeat: no-repeat;
 }
